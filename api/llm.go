@@ -15,9 +15,10 @@ var (
 		},
 	}
 	llmMap = map[string]string{
-		"groq":   "https://api.groq.com/openai/v1/chat/completions",
-		"openai": "https://api.openai.com/v1/chat/completions",
-		"gemini": "https://generativelanguage.googleapis.com/v1beta/models/",
+		"groq":       "https://api.groq.com/openai/v1/chat/completions",
+		"openai":     "https://api.openai.com/v1/chat/completions",
+		"gemini":     "https://generativelanguage.googleapis.com/v1beta/models/",
+		"openrouter": "https://openrouter.ai/api/v1/chat/completions",
 	}
 )
 
@@ -85,6 +86,8 @@ func switchllm(r *http.Request) (targetURL string) {
 		targetURL = llmMap["groq"]
 	case "openai":
 		targetURL = llmMap["openai"]
+	case "openrouter":
+		targetURL = llmMap["openrouter"]
 	case "gemini":
 		targetURL = llmMap["gemini"]
 		model := r.URL.Query().Get("model")
